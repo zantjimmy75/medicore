@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1565C0" />
+    <meta
+      name="description"
+      content="MediCore — clinic management, patient records, staff attendance and laboratory reporting."
+    />
+    <title>MediCore — Clinic Management System</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>MediCore requires JavaScript to run.</noscript>
+
+    <!-- Boot watchdog: if the bundle never mounts (blocked module, stale chunk,
+         network failure) show an explanation instead of a blank page. -->
+    <script>
+      window.__medicoreBoot = function () {
+        var root = document.getElementById('root')
+        if (root && root.childElementCount > 0) return
+        var box = document.createElement('div')
+        box.setAttribute('role', 'alert')
+        box.style.cssText =
+          'font:14px/1.6 system-ui,-apple-system,Segoe UI,sans-serif;color:#0f172a;' +
+          'max-width:34rem;margin:12vh auto;padding:1.5rem;border:1px solid #e2e8f0;' +
+          'border-radius:14px;background:#fff;box-shadow:0 10px 30px -18px rgba(15,23,42,.4)'
+        box.innerHTML =
+          '<h1 style="margin:0 0 .5rem;font-size:1.05rem">MediCore could not start</h1>' +
+          '<p style="margin:0 0 .75rem;color:#475569">The interface could not finish loading. ' +
+          'This usually means the browser is holding an old version, or the interface server ' +
+          'was restarted. Reloading fetches the current version.</p>' +
+          '<button type="button" onclick="location.reload()" style="cursor:pointer;' +
+          'background:#1565C0;color:#fff;border:0;border-radius:10px;padding:.55rem .9rem;' +
+          'font-weight:600">Reload the page</button>' +
+          '<p style="margin:.9rem 0 0;color:#94a3b8;font-size:.78rem">If it keeps happening, ' +
+          'open the browser console and share the first error.</p>'
+        document.body.appendChild(box)
+      }
+      // Generous timeout: a slow first fetch must not be mistaken for a broken
+      // build. The overlay is only a safety net, never the primary error path.
+      setTimeout(window.__medicoreBoot, 25000)
+    </script>
+
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
